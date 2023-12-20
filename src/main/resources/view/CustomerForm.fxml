@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="customerFrame" prefHeight="757.0" prefWidth="1097.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerFormController">
+   <children>
+      <JFXTextField fx:id="CustomerID" layoutX="64.0" layoutY="82.0" />
+      <Label layoutX="64.0" layoutY="61.0" text="Customer ID">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <JFXTextField fx:id="CustomerName" layoutX="313.0" layoutY="77.0" />
+      <Label layoutX="313.0" layoutY="56.0" text="Customer Name">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <JFXTextField fx:id="CustomerAddress" layoutX="564.0" layoutY="77.0" />
+      <Label layoutX="564.0" layoutY="56.0" text="Customer Address">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <JFXTextField fx:id="CustomerSalary" layoutX="853.0" layoutY="77.0" />
+      <Label layoutX="853.0" layoutY="56.0" text="Customer  Salary">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <JFXButton fx:id="saveBtn" layoutX="871.0" layoutY="153.0" onAction="#saveBtnOnAction" prefHeight="40.0" prefWidth="151.0" style="-fx-background-color: #20C997;" text="Save">
+         <effect>
+            <ColorAdjust brightness="0.28" contrast="0.42" hue="0.1" />
+         </effect>
+         <font>
+            <Font name="Calibri Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="updateBtn" layoutX="713.0" layoutY="153.0" onAction="#updateBtnOnAction" prefHeight="40.0" prefWidth="151.0" style="-fx-background-color: #FCC419;" text="Update">
+         <font>
+            <Font name="Calibri Bold" size="22.0" />
+         </font></JFXButton>
+      <TableView fx:id="CustomerTable" layoutX="83.0" layoutY="227.0" prefHeight="441.0" prefWidth="962.0" style="-fx-background-color: #5C7CFA#5C7CFA;">
+        <columns>
+          <TableColumn fx:id="colID" prefWidth="183.0" text="ID" />
+            <TableColumn fx:id="colName" prefWidth="182.0" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="202.0" text="Address" />
+            <TableColumn fx:id="colSalary" prefWidth="197.0" text="Salary" />
+            <TableColumn fx:id="colOption" prefWidth="197.0" text="Option" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="reloadBtn" layoutX="894.0" layoutY="684.0" onAction="#reloadBtnOnAction" prefHeight="40.0" prefWidth="151.0" style="-fx-background-color: #339AF0;" text="Reload">
+         <effect>
+            <ColorAdjust brightness="0.07" contrast="-0.03" hue="0.1" saturation="-0.18" />
+         </effect>
+         <font>
+            <Font name="Calibri Bold" size="22.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="backBtn" contentDisplay="GRAPHIC_ONLY" layoutX="83.0" layoutY="684.0" onAction="#backBtnOnAction" prefHeight="40.0" prefWidth="51.0">
+         <graphic>
+            <ImageView fx:id="backBtnImg" fitHeight="50.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/backBtnImg.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

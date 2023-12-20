@@ -1,0 +1,51 @@
+
+g	java:S112p"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÛÒÁ1
+h	java:S112‚"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÛÒÁ1
+h	java:S112Ç"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8òµÁÒÁ1
+L
+java:S37407"/Provide the parametrized type for this generic.(¼•éÜ8ÛÒÁ1
+Q
+java:S3740:"/Provide the parametrized type for this generic.(ƒà¸íùÿÿÿÿ8ÛÒÁ1
+K
+java:S3740="/Provide the parametrized type for this generic.(ÍÖÅc8ÛÒÁ1
+L
+java:S3740@"/Provide the parametrized type for this generic.(ÙÅáÅ8ÛÒÁ1
+K
+java:S3740C"/Provide the parametrized type for this generic.(Ï«98ÛÒÁ1
+u
+java:S1104#"SMake backBtn a static final constant or non-public and provide accessors if needed.(±ÁŞ’ûÿÿÿÿ8ÛÒÁ1
+w
+java:S1104$"UMake searchBtn a static final constant or non-public and provide accessors if needed.(‡€‘Èıÿÿÿÿ8ÛÒÁ1
+v
+java:S1104%"YMake itemFormFrame a static final constant or non-public and provide accessors if needed.(ÍáêÅ8ÛÒÁ1
+w
+java:S1104&"UMake updateBtn a static final constant or non-public and provide accessors if needed.(–…è¤üÿÿÿÿ8ÛÒÁ1
+i
+java:S2095W"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8ÌÛÒÁ1
+i
+java:S2095w"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8ÌÛÒÁ1
+m
+java:S2095 "OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8Â¶ÁÒÁ1
+j
+java:S2095½"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8Â¶ÁÒÁ1
+Ÿ
+java:S1186Ì"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Æ½ÓË8ÍÛÒÁ1
+I
+java:S1602N",Remove useless curly braces around statement(ú’â¿8ÒÛÒÁ1
+I
+java:S1602d",Remove useless curly braces around statement(ë¹¬8ÖÛÒÁ1
+U
+java:S1172"2Remove this unused method parameter "actionEvent".(û”ÿÙûÿÿÿÿ8ŞÛÒÁ1
+P
+java:S1172œ"2Remove this unused method parameter "actionEvent".(­×¬‰8çÛÒÁ1
+^	java:S125­"<This block of commented-out lines of code should be removed.(şĞåäúÿÿÿÿ8éÛÒÁ1
+U
+java:S1172¹"2Remove this unused method parameter "actionEvent".(úÉèûÿÿÿÿ8ëÛÒÁ1
+N
+java:S1128	",Remove this unused import 'dto.CustomerDto'.(ÛàÀÖüÿÿÿÿ8ã¶ÁÒÁ1
+P
+java:S1128".Remove this unused import 'dto.tm.CustomerTm'.(Ä¶™ûÿÿÿÿ8ã¶ÁÒÁ1
+W
+java:S1128":Remove this unused import 'javafx.scene.control.TreeItem'.(èæË³8ã¶ÁÒÁ1
+h
+java:S1128"KRemove this unused import 'javafx.scene.control.cell.PropertyValueFactory'.(àÎ¬õ8ã¶ÁÒÁ1

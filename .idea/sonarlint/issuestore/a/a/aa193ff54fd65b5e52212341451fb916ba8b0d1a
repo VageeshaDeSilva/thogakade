@@ -1,0 +1,38 @@
+
+L
+java:S3740;"/Provide the parametrized type for this generic.(Ç‹ì´8ó•Ä1
+L
+java:S3740>"/Provide the parametrized type for this generic.(Œà•®8ó•Ä1
+L
+java:S3740A"/Provide the parametrized type for this generic.(´°æ¸8ó•Ä1
+Q
+java:S3740D"/Provide the parametrized type for this generic.(ù‚©·üÿÿÿÿ8Ÿó•Ä1
+L
+java:S3740G"/Provide the parametrized type for this generic.(ÚÊØ˜8Ÿó•Ä1
+{
+java:S1104""YMake CustomerTable a static final constant or non-public and provide accessors if needed.(×éíÈùÿÿÿÿ8Ÿó•Ä1
+v
+java:S1104#"YMake customerFrame a static final constant or non-public and provide accessors if needed.(º¢“8Ÿó•Ä1
+u
+java:S1104$"SMake backBtn a static final constant or non-public and provide accessors if needed.(±ÁŞ’ûÿÿÿÿ8Ÿó•Ä1
+x
+java:S1104%"VMake backBtnImg a static final constant or non-public and provide accessors if needed.(­›´şÿÿÿÿ8Ÿó•Ä1
+y	java:S116""XRename this field "CustomerTable" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×éíÈùÿÿÿÿ8±ó•Ä1
+p	java:S116)"URename this field "CustomerID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÈŸ68²ó•Ä1
+s	java:S116,"WRename this field "CustomerName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ò’»8²ó•Ä1
+{	java:S116/"ZRename this field "CustomerAddress" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ©¶ßùÿÿÿÿ8²ó•Ä1
+u	java:S1162"YRename this field "CustomerSalary" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™µé©8²ó•Ä1
+I
+java:S1602W",Remove useless curly braces around statement(Ë¯È8´ó•Ä1
+O
+java:S1172g"2Remove this unused method parameter "actionEvent".(ØÅÃ¬8µó•Ä1
+c
+java:S2147—"ECombine this catch with the one at line 149, which has the same body.(ıàÑÎ8·ó•Ä1
+J
+java:S1602",Remove useless curly braces around statement(ë¹¬8·ó•Ä1
+P
+java:S1172«"2Remove this unused method parameter "actionEvent".(åà°8¹ó•Ä1
+P
+java:S1172¼"2Remove this unused method parameter "actionEvent".(˜„²õ8ºó•Ä1
+U
+java:S1172Ë"2Remove this unused method parameter "actionEvent".(û”ÿÙûÿÿÿÿ8ºó•Ä1

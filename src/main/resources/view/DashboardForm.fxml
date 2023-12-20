@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainFrame" prefHeight="757.0" prefWidth="1097.0" style="-fx-background-color: lightyellow;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormcontroller">
+   <children>
+      <JFXButton fx:id="btn_customer" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" focusTraversable="false" layoutX="70.0" layoutY="61.0" mnemonicParsing="false" onAction="#customerBtnOnAction" prefHeight="61.0" prefWidth="225.0" ripplerFill="BLACK" style="-fx-background-color: lightblue;" text="Customer" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <Label fx:id="timeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="750.0" layoutY="67.0" prefHeight="61.0" prefWidth="290.0" text="HH:mm:ss" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="39.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btn_items" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" focusTraversable="false" layoutX="70.0" layoutY="194.0" onAction="#itemBtnOnAction" prefHeight="61.0" prefWidth="225.0" style="-fx-background-color: lightblue;" text="Items" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton fx:id="placeOrderBtn" layoutX="70.0" layoutY="556.0" onAction="#placeOrderBtnOnAction" prefHeight="101.0" prefWidth="225.0" style="-fx-background-color: lightgreen;" text="Place Order" textFill="#001eff">
+         <font>
+            <Font name="System Bold" size="31.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
