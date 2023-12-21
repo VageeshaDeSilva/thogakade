@@ -1,11 +1,9 @@
 package bo.custom.impl;
 
 import bo.custom.CustomerBo;
-import dao.CrudDao;
 import dao.DaoFactory;
 import dao.custom.CustomerDao;
-import dao.custom.impl.CustomerDaoImpl;
-import dao.util.Daotype;
+import dao.Daotype;
 import dto.CustomerDto;
 import entity.Customer;
 

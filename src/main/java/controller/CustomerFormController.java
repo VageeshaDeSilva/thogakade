@@ -2,12 +2,9 @@ package controller;
 
 import bo.BoFactory;
 import bo.custom.CustomerBo;
-import bo.custom.impl.CustomerBoImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import dao.custom.CustomerDao;
-import dao.util.BoType;
-import db.DBConnection;
+import bo.BoType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,7 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import dto.CustomerDto;
 import dto.tm.CustomerTm;
-import java.awt.event.ActionEvent;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -173,7 +169,8 @@ public class CustomerFormController implements Initializable {
 
     public void updateBtnOnAction(javafx.event.ActionEvent actionEvent) {
         try {
-            boolean isUpdated = customerBo.updateCustomer(new CustomerDto(CustomerID.getText(),
+            boolean isUpdated = customerBo.updateCustomer(new CustomerDto(
+                    CustomerID.getText(),
                     CustomerName.getText(),
                     CustomerAddress.getText(),
                     Double.parseDouble(CustomerSalary.getText())

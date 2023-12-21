@@ -44,7 +44,7 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public OrderDto lastOrder() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * FROM orders ORDERS BY id DESC LIMIT 1";
+        String sql = "SELECT * FROM orders BY id DESC LIMIT 1";
         PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
         ResultSet resultSet = pstm.executeQuery();
 

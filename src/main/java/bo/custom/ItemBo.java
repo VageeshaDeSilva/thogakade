@@ -3,11 +3,15 @@ package bo.custom;
 import bo.SuperBo;
 import dto.ItemDto;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface ItemBo<T> extends SuperBo {
-    boolean saveItem(T dto);
-    boolean updateItem(T dto);
-    boolean deleteItem(String id);
-    List<ItemDto> allItems();
+    boolean saveItem(T dto) throws SQLException, ClassNotFoundException;
+    boolean updateItem(T dto) throws SQLException, ClassNotFoundException;
+    boolean deleteItem(String id) throws SQLException, ClassNotFoundException;
+    List<ItemDto> allItems() throws SQLException, ClassNotFoundException;
+
+    T getItem(String id);
+
 }

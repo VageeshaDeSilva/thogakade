@@ -1,9 +1,11 @@
 package controller;
 
+import bo.BoFactory;
 import bo.custom.CustomerBo;
-import bo.custom.impl.CustomerBoImpl;
+import bo.custom.ItemBo;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import bo.BoType;
 import dto.CustomerDto;
 import dto.ItemDto;
 import dto.OrderDetailsDto;
@@ -11,7 +13,6 @@ import dto.OrderDto;
 import dto.tm.OrderTm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -21,11 +22,7 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import dao.custom.CustomerDao;
-import dao.custom.ItemDao;
 import dao.custom.OrderDao;
-import dao.custom.impl.CustomerDaoImpl;
-import dao.custom.impl.ItemDaoImpl;
 import dao.custom.impl.OrderDaoImpl;
 
 import java.io.IOException;
@@ -59,8 +56,8 @@ public class PlaceOrderFormController {
     private List<ItemDto> items;
     private double tot = 0;
 
-    private CustomerBo<CustomerDto> customerBo = new CustomerBoImpl();
-    private ItemDao itemDao = new ItemDaoImpl();
+    private CustomerBo<CustomerDto> customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
+    private ItemBo<ItemDto> itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
     private OrderDao orderDao = new OrderDaoImpl();
 
     private ObservableList<OrderTm> tmList = FXCollections.observableArrayList();
@@ -96,30 +93,26 @@ public class PlaceOrderFormController {
 
     private void loadItemCodes() {
         try {
-            items = itemDao.allItems();
+            items = itemBo.allItems();
             ObservableList list = FXCollections.observableArrayList();
             for (ItemDto dto:items) {
                 list.add(dto.getCode());
             }
             itemCodeComboBox.setItems(list);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
     private void loadCustomerIds() {
         try {
             customers = customerBo.allCustomers();
-            ObservableList list = FXCollections.observableArrayList();
+            ObservableList<Object> list = FXCollections.observableArrayList();
             for (CustomerDto dto:customers) {
                 list.add(dto.getId());
             }
             customerIdComboBox.setItems(list);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
@@ -129,20 +122,18 @@ public class PlaceOrderFormController {
             OrderDto dto = orderDao.lastOrder();
             if (dto!=null){
                 String id = dto.getOrderId();
-                int num = Integer.parseInt(id.split("[D]")[1]);
+                int num = Integer.parseInt(id.split("D")[1]);
                 num++;
                 orderIdLabel.setText(String.format("D%03d",num));
             }else{
                 orderIdLabel.setText("D001");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    public void backBtnOnAction(ActionEvent actionEvent) {
+    public void backBtnOnAction() {
         Stage stage = (Stage) placeOrderFrame.getScene().getWindow();
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DashboardForm.fxml"))));
@@ -154,7 +145,7 @@ public class PlaceOrderFormController {
         }
     }
 
-    public void placeOrderBtnOnAction(ActionEvent actionEvent) {
+    public void placeOrderBtnOnAction() {
         List<OrderDetailsDto> list = new ArrayList<>();
         for (OrderTm tm:tmList) {
             list.add(new OrderDetailsDto(
@@ -164,12 +155,11 @@ public class PlaceOrderFormController {
                     tm.getAmount()/tm.getQty()
             ));
         }
-//        if (!tmList.isEmpty()){
         boolean isSaved = false;
         try {
             isSaved = orderDao.saveOrder(new OrderDto(
                     orderIdLabel.getText(),
-                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
                     customerIdComboBox.getValue().toString(),
                     list
             ));
@@ -178,19 +168,14 @@ public class PlaceOrderFormController {
             }else{
                 new Alert(Alert.AlertType.ERROR,"Something went wrong!").show();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
-
-
-//        }
     }
 
-    public void addToCartBtnOnAction(ActionEvent actionEvent) {
+    public void addToCartBtnOnAction() throws RuntimeException {
         try {
-            double amount = itemDao.getItem(itemCodeComboBox.getValue().toString()).getUnitPrice() * Integer.parseInt(qtyTextField.getText());
+            double amount = itemBo.getItem(itemCodeComboBox.getValue().toString()).getUnitPrice() * Integer.parseInt(qtyTextField.getText());
             JFXButton btn = new JFXButton("Delete");
 
             OrderTm tm = new OrderTm(
@@ -229,10 +214,8 @@ public class PlaceOrderFormController {
             cartTable.setShowRoot(false);
 
             total.setText(String.format("%.2f",tot));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            throw new RuntimeException(e);
         }
     }
 }

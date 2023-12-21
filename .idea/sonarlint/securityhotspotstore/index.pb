@@ -79,3 +79,7 @@ S
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+L
+src/main/java/bo/BoType.java,7\9\7976f27ebbbb8b3237ca532e5eb5642d51954e2d
+N
+src/main/java/dao/Daotype.java,7\c\7cc8022cd0869b500ebde8ed06bf52fdc806fa44

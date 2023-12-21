@@ -1,8 +1,6 @@
 package dao;
 
-import bo.SuperBo;
 import dao.custom.impl.CustomerDaoImpl;
-import dao.util.Daotype;
 
 public class DaoFactory {
     private static DaoFactory daoFactory;
