@@ -61,3 +61,21 @@ W
 'src/main/java/bo/custom/CustomerBo.java,b\a\ba3778c7e27590033ee81d064dd4468aa33eda6b
 `
 0src/main/java/bo/custom/impl/CustomerBoImpl.java,1\a\1a654b3282b021ba122a376474fac2d6aba60198
+T
+$src/main/java/dao/util/CrudUtil.java,9\8\982fb6ab96207e3dd9fec0af0e29293d46b73821
+O
+src/main/java/bo/BoFactory.java,8\7\87f10d9337d52368b8fe3186fdb076fdfef9fdb2
+R
+"src/main/java/dao/util/BoType.java,c\c\cc2b82ac2f4a22f578bd5a192be9127352a2ebb1
+S
+#src/main/java/dao/util/Daotype.java,4\8\48cca7b57992f4827c2b9444c2fc85a57adca83c
+Q
+!src/main/java/dao/DaoFactory.java,8\d\8d44b226482856d38ca27da71ce51785fc57a3e4
+S
+#src/main/java/bo/custom/ItemBo.java,5\5\550c2e395f13d384aec20a9ebca0bc483a9313ae
+\
+,src/main/java/bo/custom/impl/ItemBoImpl.java,b\4\b462a7d52bfda8233a21218d58e9fececacef184
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0

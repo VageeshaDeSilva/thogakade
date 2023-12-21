@@ -1,10 +1,12 @@
 package controller;
 
+import bo.BoFactory;
 import bo.custom.CustomerBo;
 import bo.custom.impl.CustomerBoImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import dao.custom.CustomerDao;
+import dao.util.BoType;
 import db.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -73,7 +75,8 @@ public class CustomerFormController implements Initializable {
     @FXML
     private JFXButton reloadBtn;
 
-    private CustomerBo<CustomerDto> customerBo=new CustomerBoImpl();
+//    can hide object creation using factory design pattern
+    private CustomerBo<CustomerDto> customerBo= BoFactory.getInstance().getBo(BoType.CUSTOMER);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -128,7 +131,7 @@ public class CustomerFormController implements Initializable {
             List<CustomerDto> dtoList = customerBo.allCustomers();
 
             for (CustomerDto dto:dtoList) {
-                Button btn = new Button("Delete");
+                JFXButton btn = new JFXButton("Delete");
 
                 CustomerTm c = new CustomerTm(
                         dto.getId(),
@@ -170,7 +173,7 @@ public class CustomerFormController implements Initializable {
 
     public void updateBtnOnAction(javafx.event.ActionEvent actionEvent) {
         try {
-            boolean isUpdated = CustomerDao.updateCustomer(new CustomerDto(CustomerID.getText(),
+            boolean isUpdated = customerBo.updateCustomer(new CustomerDto(CustomerID.getText(),
                     CustomerName.getText(),
                     CustomerAddress.getText(),
                     Double.parseDouble(CustomerSalary.getText())

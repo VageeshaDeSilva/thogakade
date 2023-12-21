@@ -20,14 +20,14 @@ v
 java:S1104%"YMake itemFormFrame a static final constant or non-public and provide accessors if needed.(ÍáêÅ8ÛÒÁ1
 w
 java:S1104&"UMake updateBtn a static final constant or non-public and provide accessors if needed.(–…è¤üÿÿÿÿ8ÛÒÁ1
-i
-java:S2095W"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8ÌÛÒÁ1
-i
-java:S2095w"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8ÌÛÒÁ1
 m
 java:S2095 "OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8Â¶ÁÒÁ1
+i
+java:S2095w"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8ÌÛÒÁ1
 j
 java:S2095½"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8Â¶ÁÒÁ1
+i
+java:S2095W"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8ÌÛÒÁ1
 Ÿ
 java:S1186Ì"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Æ½ÓË8ÍÛÒÁ1
 I
