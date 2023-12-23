@@ -34,6 +34,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javafx.beans.binding.Bindings.isEmpty;
+
 public class PlaceOrderFormController {
     public JFXButton backBtn;
     public AnchorPane placeOrderFrame;
@@ -53,6 +55,7 @@ public class PlaceOrderFormController {
     public JFXButton placeOrderBtn;
     public Label orderIdLabel;
     public Label totalLabel;
+    public Label idLabel;
 
     private List<CustomerDto> customers;
     private List<ItemDto> items;
@@ -71,7 +74,8 @@ public class PlaceOrderFormController {
         amountTabelCol.setCellValueFactory(new TreeItemPropertyValueFactory<>("amount"));
         optionTabelCol.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
 
-//        orderBo.generateId();
+       String gId=orderBo.generateId();
+        idLabel.setText(gId);
         loadCustomerIds();
         loadItemCodes();
 
@@ -131,39 +135,48 @@ public class PlaceOrderFormController {
         }
     }
 
-    public void placeOrderBtnOnAction() {
-        List<OrderDetailsDto> list = new ArrayList<>();
-        for (OrderTm tm:tmList) {
-            list.add(new OrderDetailsDto(
-                    orderIdLabel.getText(),
-                    tm.getCode(),
-                    tm.getQty(),
-                    tm.getAmount()/tm.getQty()
-            ));
+    public void placeOrderBtnOnAction() throws SQLException, ClassNotFoundException {
+        orderBo.generateId();
+      if(!isEmpty()){
+          List<OrderDetailsDto> list = new ArrayList<>();
+          for (OrderTm tm:tmList) {
+              list.add(new OrderDetailsDto(
+                      orderIdLabel.getText(),
+                      tm.getCode(),
+                      tm.getQty(),
+                      tm.getAmount()/tm.getQty()
+              ));
+          }
+
+          OrderDto dto = new OrderDto(
+                  orderIdLabel.getText(),
+                  LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
+                  customerIdComboBox.getValue().toString(),
+                  list
+          );
+
+
+          if(!tmList.isEmpty()){
+              boolean isSaved = orderBo.saveOrder(dto);
+              if (isSaved){
+                  new Alert(Alert.AlertType.INFORMATION, "Order Saved!").show();
+                  setOrderId();
+              }else{
+                  new Alert(Alert.AlertType.ERROR, "Order not Saved!").show();
+              }
+          }
+      }
+      else {
+          new Alert(Alert.AlertType.ERROR,"Empty field found").show();
+      }
+    }
+
+    public boolean isEmpty(){
+        if(qtyTextField.getText().isEmpty()||descriptionTextField.getText().isEmpty()||unitPriceTextField.getText().isEmpty()){
+            return true;
+        }else{
+            return false;
         }
-
-        OrderDto dto = new OrderDto(
-                orderIdLabel.getText(),
-                LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
-                customerIdComboBox.getValue().toString(),
-                list
-        );
-
-
-        try {
-            boolean isSaved = orderBo.saveOrder(dto);
-            if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION, "Order Saved!").show();
-                setOrderId();
-            }else{
-                new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
     }
 
     private void setOrderId() {
@@ -175,6 +188,8 @@ public class PlaceOrderFormController {
             throw new RuntimeException(e);
         }
     }
+
+
 
     public void addToCartBtnOnAction() throws RuntimeException {
         JFXButton btn = new JFXButton("Delete");

@@ -1,14 +1,13 @@
-package entity;
+package dto;
 
 import lombok.*;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Setter
 @Getter
 @ToString
-
-public class Orders {
+@NoArgsConstructor
+public class OrderDtoNew {
     private String orderId;
     private String date;
     private String customerId;

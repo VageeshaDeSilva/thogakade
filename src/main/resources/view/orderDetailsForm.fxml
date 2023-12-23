@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="757.0" prefWidth="1097.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderDetailsFormController">
+   <children>
+      <Label layoutX="71.0" layoutY="57.0" prefHeight="41.0" prefWidth="69.0" text="Order ID" />
+      <JFXTextField fx:id="searchIdTxtField" layoutX="150.0" layoutY="62.0" prefHeight="31.0" prefWidth="268.0" />
+      <JFXTreeTableView fx:id="orderTable" layoutX="71.0" layoutY="118.0" prefHeight="240.0" prefWidth="949.0">
+         <columns>
+            <TreeTableColumn fx:id="orderIdCol" prefWidth="279.0" text="Order ID" />
+            <TreeTableColumn fx:id="dateCol" prefWidth="370.0" text="Date" />
+            <TreeTableColumn fx:id="customerIdCol" prefWidth="299.0" text="CustomerID" />
+         </columns>
+      </JFXTreeTableView>
+      <JFXTreeTableView fx:id="detailTable" layoutX="71.0" layoutY="392.0" prefHeight="240.0" prefWidth="949.0">
+         <columns>
+            <TreeTableColumn fx:id="detailsOrderIdCol" prefWidth="222.0" text="OrderID" />
+            <TreeTableColumn fx:id="detailsItemCodeCol" prefWidth="255.0" text="ItemCode" />
+            <TreeTableColumn fx:id="detailsQtyCol" prefWidth="254.0" text="QTY" />
+            <TreeTableColumn fx:id="detailsPriceCol" prefWidth="217.0" text="Unit Price" />
+         </columns>
+      </JFXTreeTableView>
+      <JFXButton fx:id="reloadBtn" layoutX="482.0" layoutY="665.0" onAction="#reloadBtnOnAction" prefHeight="41.0" prefWidth="128.0" style="-fx-background-color: #ff4f5f;" text="Reload" textFill="WHITE" />
+       <JFXButton fx:id="backBtn" contentDisplay="GRAPHIC_ONLY" layoutX="65.0" layoutY="650.0" onAction="#backBtnOnAction" prefHeight="55.0" prefWidth="62.0">
+           <cursor>
+               <Cursor fx:constant="OPEN_HAND" />
+           </cursor>
+         <graphic>
+               <ImageView fitHeight="67.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="@../images/backBtnImg.png" />
+                   </image>
+                   <cursor>
+                       <Cursor fx:constant="OPEN_HAND" />
+                   </cursor>
+               </ImageView>
+         </graphic>
+       </JFXButton>
+   </children>
+</AnchorPane>

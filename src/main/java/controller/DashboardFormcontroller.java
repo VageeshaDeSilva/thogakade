@@ -26,6 +26,7 @@ public class DashboardFormcontroller {
     public Label timeLabel;
     public JFXButton btn_items;
     public JFXButton placeOrderBtn;
+    public JFXButton orderDetailsBtn;
 
     public void initialize(){
         calculateTime();
@@ -73,6 +74,20 @@ public class DashboardFormcontroller {
             stage.setResizable(false);
             stage.centerOnScreen();
             stage.setTitle("Place Order Form");
+            stage.show();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void orderDetailsBtnOnAction(ActionEvent actionEvent) {
+        Stage stage=(Stage) mainFrame.getScene().getWindow();
+        try{
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/orderDetailsForm.fxml"))));
+            stage.setResizable(false);
+            stage.centerOnScreen();
+            stage.setTitle("Order Details Form");
             stage.show();
         }
         catch (IOException e){

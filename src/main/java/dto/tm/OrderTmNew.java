@@ -1,4 +1,4 @@
-package entity;
+package dto.tm;
 
 import lombok.*;
 
@@ -8,8 +8,8 @@ import lombok.*;
 @Getter
 @ToString
 
-public class Orders {
-    private String orderId;
+public class OrderTmNew {
+    private String id;
     private String date;
     private String customerId;
 }

@@ -9,18 +9,22 @@ r
 java:S1104"UMake btn_items a static final constant or non-public and provide accessors if needed.(ËÁ¯8ôÚ«ãÈ1
 v
 java:S1104"YMake placeOrderBtn a static final constant or non-public and provide accessors if needed.(•ŒÛµ8ôÚ«ãÈ1
+x
+java:S1104"[Make orderDetailsBtn a static final constant or non-public and provide accessors if needed.(×Æêè8¤ê¶¶É1
 s	java:S116"WRename this field "btn_customer" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ü±8üÚ«ãÈ1
 p	java:S116"TRename this field "btn_items" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ËÁ¯8üÚ«ãÈ1
 I
-java:S1602%",Remove useless curly braces around statement( êàÑ8şÚ«ãÈ1
+java:S1602&",Remove useless curly braces around statement( êàÑ8şÚ«ãÈ1
 R
-java:S2209&"5Change this instance-reference to a static reference.(ÀùÂ¶8ÿÚ«ãÈ1
+java:S2209'"5Change this instance-reference to a static reference.(ÀùÂ¶8ÿÚ«ãÈ1
 O
-java:S1172."2Remove this unused method parameter "actionEvent".(¬Üç8ÿÚ«ãÈ1
+java:S1172/"2Remove this unused method parameter "actionEvent".(¬Üç8ÿÚ«ãÈ1
 T
-java:S1172<"2Remove this unused method parameter "actionEvent".(—Ûêğûÿÿÿÿ8‹Û«ãÈ1
+java:S1172="2Remove this unused method parameter "actionEvent".(—Ûêğûÿÿÿÿ8‹Û«ãÈ1
 N
-java:S1172E"2Remove this unused method parameter "actionEvent".(»Ç•[8‹Û«ãÈ1
+java:S1172F"2Remove this unused method parameter "actionEvent".(»Ç•[8‹Û«ãÈ1
+T
+java:S1172T"2Remove this unused method parameter "actionEvent".(Æü‡€ùÿÿÿÿ8Üì½¶É1
 M
 java:S1128	"0Remove this unused import 'javafx.scene.Parent'.(²ä¡È8ŒÛ«ãÈ1
 N
