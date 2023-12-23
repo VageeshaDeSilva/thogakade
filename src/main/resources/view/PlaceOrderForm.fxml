@@ -91,7 +91,7 @@
             <Font name="System Italic" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="total" layoutX="732.0" layoutY="697.0" prefHeight="35.0" prefWidth="104.0" text="0.00">
+      <Label fx:id="totalLabel" layoutX="732.0" layoutY="697.0" prefHeight="35.0" prefWidth="104.0" text="0.00">
          <font>
             <Font name="System Italic" size="24.0" />
          </font>

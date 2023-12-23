@@ -3,6 +3,8 @@ package controller;
 import bo.BoFactory;
 import bo.custom.CustomerBo;
 import bo.custom.ItemBo;
+import bo.custom.OrderBo;
+import bo.custom.impl.OrderBoImpl;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import bo.BoType;
@@ -49,27 +51,27 @@ public class PlaceOrderFormController {
     public TreeTableColumn amountTabelCol;
     public TreeTableColumn optionTabelCol;
     public JFXButton placeOrderBtn;
-    public Label total;
     public Label orderIdLabel;
+    public Label totalLabel;
 
     private List<CustomerDto> customers;
     private List<ItemDto> items;
-    private double tot = 0;
+    private double total = 0;
 
     private CustomerBo<CustomerDto> customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
     private ItemBo<ItemDto> itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
-    private OrderDao orderDao = new OrderDaoImpl();
+    private OrderBo orderBo = new OrderBoImpl();
 
     private ObservableList<OrderTm> tmList = FXCollections.observableArrayList();
 
-    public void initialize(){
+    public void initialize() throws SQLException, ClassNotFoundException {
         codeTabelCol.setCellValueFactory(new TreeItemPropertyValueFactory<>("code"));
         descriptionTabelCol.setCellValueFactory(new TreeItemPropertyValueFactory<>("description"));
         qtyTabelCol.setCellValueFactory(new TreeItemPropertyValueFactory<>("qty"));
         amountTabelCol.setCellValueFactory(new TreeItemPropertyValueFactory<>("amount"));
         optionTabelCol.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
 
-        generateId();
+//        orderBo.generateId();
         loadCustomerIds();
         loadItemCodes();
 
@@ -117,22 +119,6 @@ public class PlaceOrderFormController {
         }
     }
 
-    private void generateId() {
-        try {
-            OrderDto dto = orderDao.lastOrder();
-            if (dto!=null){
-                String id = dto.getOrderId();
-                int num = Integer.parseInt(id.split("D")[1]);
-                num++;
-                orderIdLabel.setText(String.format("D%03d",num));
-            }else{
-                orderIdLabel.setText("D001");
-            }
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void backBtnOnAction() {
         Stage stage = (Stage) placeOrderFrame.getScene().getWindow();
         try {
@@ -155,67 +141,75 @@ public class PlaceOrderFormController {
                     tm.getAmount()/tm.getQty()
             ));
         }
-        boolean isSaved = false;
+
+        OrderDto dto = new OrderDto(
+                orderIdLabel.getText(),
+                LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
+                customerIdComboBox.getValue().toString(),
+                list
+        );
+
+
         try {
-            isSaved = orderDao.saveOrder(new OrderDto(
-                    orderIdLabel.getText(),
-                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                    customerIdComboBox.getValue().toString(),
-                    list
-            ));
+            boolean isSaved = orderBo.saveOrder(dto);
             if (isSaved){
-                new Alert(Alert.AlertType.INFORMATION,"Order Saved!").show();
+                new Alert(Alert.AlertType.INFORMATION, "Order Saved!").show();
+                setOrderId();
             }else{
-                new Alert(Alert.AlertType.ERROR,"Something went wrong!").show();
+                new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
             }
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private void setOrderId() {
+        try {
+            orderIdLabel.setText(orderBo.generateId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
     public void addToCartBtnOnAction() throws RuntimeException {
-        try {
-            double amount = itemBo.getItem(itemCodeComboBox.getValue().toString()).getUnitPrice() * Integer.parseInt(qtyTextField.getText());
-            JFXButton btn = new JFXButton("Delete");
+        JFXButton btn = new JFXButton("Delete");
 
-            OrderTm tm = new OrderTm(
-                    itemCodeComboBox.getValue().toString(),
-                    descriptionTextField.getText(),
-                    Integer.parseInt(qtyTextField.getText()),
-                    amount,
-                    btn
-            );
-
-            btn.setOnAction(actionEvent1 -> {
-                tmList.remove(tm);
-                tot -= tm.getAmount();
-                cartTable.refresh();
-                total.setText(String.format("%.2f",tot));
-            });
-
-            boolean isExist = false;
-
-            for (OrderTm order:tmList) {
-                if (order.getCode().equals(tm.getCode())){
-                    order.setQty(order.getQty()+tm.getQty());
-                    order.setAmount(order.getAmount()+tm.getAmount());
-                    isExist = true;
-                    tot+=tm.getAmount();
-                }
+        OrderTm tm = new OrderTm(
+                itemCodeComboBox.getValue().toString(),
+                descriptionTextField.getText(),
+                Integer.parseInt(qtyTextField.getText()),
+                Double.parseDouble(unitPriceTextField.getText())*Integer.parseInt(qtyTextField.getText()),
+                btn
+        );
+        btn.setOnAction(actionEvent -> {
+            tmList.remove(tm);
+            total-=tm.getAmount();
+            totalLabel.setText(String.format("%.2f",total));
+            cartTable.refresh();
+        });
+        boolean isExist = false;
+        for (OrderTm order:tmList) {
+            if (order.getCode().equals(tm.getCode())){
+                order.setQty(order.getQty()+tm.getQty());
+                order.setAmount(order.getAmount()+tm.getAmount());
+                isExist = true;
+                total+= tm.getAmount();
             }
-
-            if (!isExist){
-                tmList.add(tm);
-                tot+= tm.getAmount();
-            }
-
-            TreeItem<OrderTm> treeObject = new RecursiveTreeItem<OrderTm>(tmList, RecursiveTreeObject::getChildren);
-            cartTable.setRoot(treeObject);
-            cartTable.setShowRoot(false);
-
-            total.setText(String.format("%.2f",tot));
-        } catch (NumberFormatException e) {
-            throw new RuntimeException(e);
         }
+        if (!isExist){
+            tmList.add(tm);
+            total+=tm.getAmount();
+        }
+
+        totalLabel.setText(String.format("%.2f",total));
+
+        TreeItem treeItem = new RecursiveTreeItem<>(tmList, RecursiveTreeObject::getChildren);
+        cartTable.setRoot(treeItem);
+        cartTable.setShowRoot(false);
     }
 }

@@ -111,7 +111,7 @@
                         <Font name="System Bold" size="19.0" />
                      </font>
                   </Label>
-                  <JFXTextField promptText="Search" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="searchItem" promptText="Search" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <JFXButton fx:id="searchBtn" onAction="#searchBtnOnAction" prefHeight="46.0" prefWidth="158.0" style="-fx-background-color: royalblue;" text="Search" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">

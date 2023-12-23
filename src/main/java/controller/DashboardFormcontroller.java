@@ -6,6 +6,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -56,18 +57,13 @@ public class DashboardFormcontroller {
         }
     }
 
-    public void itemBtnOnAction(ActionEvent actionEvent) {
+    public void itemBtnOnAction(ActionEvent actionEvent) throws IOException {
         Stage stage=(Stage) mainFrame.getScene().getWindow();
-        try{
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ItemForm.fxml"))));
             stage.setResizable(false);
             stage.centerOnScreen();
             stage.setTitle("Item Form");
             stage.show();
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
     }
 
     public void placeOrderBtnOnAction(ActionEvent actionEvent) {

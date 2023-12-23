@@ -12,6 +12,8 @@ import db.DBConnection;
 import dto.CustomerDto;
 import dto.ItemDto;
 import dto.tm.CustomerTm;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,6 +31,7 @@ import dto.tm.ItemTm;
 import java.io.IOException;
 import java.sql.*;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class ItemFormController {
 
@@ -78,11 +81,24 @@ public class ItemFormController {
         optionCol.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
         loadItemTable();
 
-        itemTable.getSelectionModel().selectedItemProperty().addListener((observableValue, oldvalue, newValue) -> {
-            setData(newValue.getValue());
+        itemTable.getSelectionModel().selectedItemProperty().addListener((observableValue,oldvalue,newValue) -> {
+            if(newValue!=null){
+                setData(newValue.getValue());
+            }
         });
+
+        searchBtnOnAction();
     }
 
+    private void setData(ItemTm newValue) {
+        if(newValue!=null){
+            itemCodeTextField.setEditable(false);
+            itemCodeTextField.setText(newValue.getCode());
+            descriptionTextField.setText(newValue.getDescription());
+            unitPriceTextField.setText(String.valueOf(newValue.getUnitPrice()));
+            qtyTextField.setText(String.valueOf(newValue.getQtyOnHand()));
+        }
+    }
     private void loadItemTable() throws SQLException, ClassNotFoundException {
             ObservableList<ItemTm> tmList = FXCollections.observableArrayList();
 
@@ -117,15 +133,7 @@ public class ItemFormController {
         itemTable.setShowRoot(false);
     }
 
-    private void setData(ItemTm newValue) {
-        if(newValue!=null){
-            itemCodeTextField.setEditable(false);
-            itemCodeTextField.setText(newValue.getCode());
-            descriptionTextField.setText(newValue.getDescription());
-            unitPriceTextField.setText(String.valueOf(newValue.getUnitPrice()));
-            qtyTextField.setText(String.valueOf(newValue.getQtyOnHand()));
-        }
-    }
+
 
     public void saveBtnOnAction() throws SQLException, ClassNotFoundException {
         try {
@@ -177,8 +185,20 @@ public class ItemFormController {
         }
     }
 
-    public void searchBtnOnAction(ActionEvent actionEvent) {
-        String itemC = searchItem.getText();
+    public void searchBtnOnAction() {
+        searchItem.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
+                itemTable.setPredicate(new Predicate<TreeItem<ItemTm>>() {
+                    @Override
+                    public boolean test(TreeItem<ItemTm> treeItem) {
+                        return treeItem.getValue().getCode().toLowerCase().contains(newValue.toLowerCase()) ||
+                                treeItem.getValue().getDescription().toLowerCase().contains(newValue.toLowerCase());
+
+                    }
+                });
+            }
+        });
     }
 
     public void backBtnOnAction(javafx.event.ActionEvent actionEvent) {

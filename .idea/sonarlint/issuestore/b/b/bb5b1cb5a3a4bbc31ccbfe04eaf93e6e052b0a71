@@ -1,46 +1,44 @@
 
-g	java:S112j"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8²¤“åÈ1
-g	java:S112l"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8³¤“åÈ1
-h	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8³¤“åÈ1
-h	java:S112¢"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8³¤“åÈ1
-h	java:S112°"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8³¤“åÈ1
+g	java:S112z"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8íÏ»®É1
+g	java:S112|"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8íÏ»®É1
+h	java:S112˜"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8íÏ»®É1
+h	java:S112ª"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8íÏ»®É1
+h	java:S112¸"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8íÏ»®É1
 L
-java:S37409"/Provide the parametrized type for this generic.(¼•éÜ8³¤“åÈ1
+java:S3740<"/Provide the parametrized type for this generic.(¼•éÜ8îÏ»®É1
 Q
-java:S3740<"/Provide the parametrized type for this generic.(ƒà¸íùÿÿÿÿ8³¤“åÈ1
+java:S3740?"/Provide the parametrized type for this generic.(ƒà¸íùÿÿÿÿ8îÏ»®É1
 K
-java:S3740?"/Provide the parametrized type for this generic.(ÍÖÅc8³¤“åÈ1
+java:S3740B"/Provide the parametrized type for this generic.(ÍÖÅc8îÏ»®É1
 L
-java:S3740B"/Provide the parametrized type for this generic.(ÙÅáÅ8³¤“åÈ1
+java:S3740E"/Provide the parametrized type for this generic.(ÙÅáÅ8îÏ»®É1
 K
-java:S3740E"/Provide the parametrized type for this generic.(Ï«98³¤“åÈ1
+java:S3740H"/Provide the parametrized type for this generic.(Ï«98îÏ»®É1
+F
+java:S1604À"(Make this anonymous inner class a lambda(§Ö®ì8û­Â®É1
+E
+java:S1604½"(Make this anonymous inner class a lambda(‰÷õ)8û­Â®É1
 u
-java:S1104#"SMake backBtn a static final constant or non-public and provide accessors if needed.(±ÁŞ’ûÿÿÿÿ8³¤“åÈ1
+java:S1104&"SMake backBtn a static final constant or non-public and provide accessors if needed.(±ÁŞ’ûÿÿÿÿ8ïÏ»®É1
 w
-java:S1104$"UMake searchBtn a static final constant or non-public and provide accessors if needed.(‡€‘Èıÿÿÿÿ8³¤“åÈ1
+java:S1104'"UMake searchBtn a static final constant or non-public and provide accessors if needed.(‡€‘Èıÿÿÿÿ8ïÏ»®É1
 v
-java:S1104%"YMake itemFormFrame a static final constant or non-public and provide accessors if needed.(ÍáêÅ8³¤“åÈ1
+java:S1104("YMake itemFormFrame a static final constant or non-public and provide accessors if needed.(ÍáêÅ8ïÏ»®É1
 w
-java:S1104&"UMake updateBtn a static final constant or non-public and provide accessors if needed.(–…è¤üÿÿÿÿ8³¤“åÈ1
+java:S1104)"UMake updateBtn a static final constant or non-public and provide accessors if needed.(–…è¤üÿÿÿÿ8ïÏ»®É1
 u
-java:S1104'"SMake saveBtn a static final constant or non-public and provide accessors if needed.(ôä¹Íüÿÿÿÿ8³¤“åÈ1
+java:S1104*"SMake saveBtn a static final constant or non-public and provide accessors if needed.(ôä¹Íüÿÿÿÿ8ïÏ»®É1
 s
-java:S1104("VMake searchItem a static final constant or non-public and provide accessors if needed.(ÏÒèÜ8³¤“åÈ1
-I
-java:S1602Q",Remove useless curly braces around statement(ú’â¿8Ç¤“åÈ1
+java:S1104+"VMake searchItem a static final constant or non-public and provide accessors if needed.(ÏÒèÜ8ïÏ»®É1
 b
-java:S2147k"ECombine this catch with the one at line 105, which has the same body.(ıàÑÎ8È¤“åÈ1
-W
-java:S1854µ"9Remove this useless assignment to local variable "itemC".(©±ÕÌ8ÿº”åÈ1
-P
-java:S1172´"2Remove this unused method parameter "actionEvent".(Æ½ÓË8Ë¤“åÈ1
-H
-java:S1481µ"*Remove this unused "itemC" local variable.(©±ÕÌ8Ì³˜åÈ1
+java:S2147{"ECombine this catch with the one at line 121, which has the same body.(ıàÑÎ8Ğ»®É1
 U
-java:S1172¸"2Remove this unused method parameter "actionEvent".(û”ÿÙûÿÿÿÿ8Ë¤“åÈ1
+java:S1172Ì"2Remove this unused method parameter "actionEvent".(û”ÿÙûÿÿÿÿ8–Ğ»®É1
 I
-java:S1128",Remove this unused import 'db.DBConnection'.(Šùà†8Ï¤“åÈ1
+java:S1128",Remove this unused import 'db.DBConnection'.(Šùà†8ç®®¯É1
 N
-java:S1128",Remove this unused import 'dto.CustomerDto'.(ÛàÀÖüÿÿÿÿ8Ï¤“åÈ1
+java:S1128",Remove this unused import 'dto.CustomerDto'.(ÛàÀÖüÿÿÿÿ8ç®®¯É1
 P
-java:S1128".Remove this unused import 'dto.tm.CustomerTm'.(Ä¶™ûÿÿÿÿ8Ï¤“åÈ1
+java:S1128".Remove this unused import 'dto.tm.CustomerTm'.(Ä¶™ûÿÿÿÿ8ç®®¯É1
+W
+java:S1128"5Remove this unused import 'javafx.event.ActionEvent'.(î•¯¼ıÿÿÿÿ8ç®®¯É1
