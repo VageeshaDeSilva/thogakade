@@ -34,8 +34,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static javafx.beans.binding.Bindings.isEmpty;
-
 public class PlaceOrderFormController {
     public JFXButton backBtn;
     public AnchorPane placeOrderFrame;
